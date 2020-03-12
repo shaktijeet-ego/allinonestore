@@ -1,5 +1,22 @@
 {% extends 'base.html' %}
 
-{% block content%} 
+{% block content %}
 
-{% endblock content%}
+<br>
+<main>
+    
+    <form class="form-group" method="post" action="{% url 'contact' %}">
+        {% csrf_token%}
+    <div class="container wow fadeIn">
+        <h2 class="my-5 h2 text-center">About Page</h2>
+        <div class="md-form mb-5">
+            <input type='text' placeholder='Name' id='name' name='name' class='form-control' />
+            <label for="name" class="">Name</label>
+
+            <input type="submit" />
+        </div>
+
+    </div>
+    </form>
+</main>
+{% endblock content %}

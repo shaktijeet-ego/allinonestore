@@ -25,6 +25,15 @@ SECRET_KEY = '_c(bj*b67ft-*=oj7bc3(w6uc28#3=r2d9%o9pqg#&4ch_5mlv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+#EMAIL SETTINGS
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'shaktijeet.tripati@gmail.com'
+EMAIL_HOST_PASSWORD = 'Tr!372647'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 ALLOWED_HOSTS = []
 
 
@@ -131,3 +140,7 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = "F:\\Study Materials\\practice\\allinonestore\\zxvg"
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'products/media/')
