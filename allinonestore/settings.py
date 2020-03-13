@@ -143,4 +143,4 @@ STATIC_ROOT = "F:\\Study Materials\\practice\\allinonestore\\zxvg"
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR,'products/media/')
+MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
