@@ -4,6 +4,7 @@ from django.db import models
 
 class Product(models.Model):
     name = models.CharField(max_length = 50)
+    slug = models.SlugField()
     product_image = models.ImageField(upload_to = 'product', null = True, blank = True)
     price = models.FloatField()
     date = models.DateTimeField(auto_now=True)
