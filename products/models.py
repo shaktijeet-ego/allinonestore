@@ -12,3 +12,8 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ShopProduct(models.Model):
+    name = models.ForeignKey(Product, default = "None", on_delete=models.CASCADE)
+    product_name = models.TextField(max_length= 1000)
