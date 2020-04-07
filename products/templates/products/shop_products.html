@@ -164,6 +164,8 @@
 
       <!--Grid row-->
       <div class="row wow fadeIn">
+
+        {% for shop in shops %}
         <!--Fourth column-->
         <div class="col-lg-3 col-md-6 mb-4">
 
@@ -185,17 +187,17 @@
             <!--Card content-->
             <div class="card-body text-center">
               <!--Category & Title-->
-              <a href="{% url 'shop-products' shop.id %}" class="grey-text">
-                <h5>{{product.name}}</h5>
+             
+                <h5>{{shop.shop}}</h5>
               </a>
               <h5>
                 <strong>
-                  <a href="" class="dark-grey-text">{{product.date}}</a>
+                  <a href="" class="dark-grey-text">{{shop.shop_opening_time}}</a>
                 </strong>
               </h5>
 
               <h4 class="font-weight-bold blue-text">
-                <strong>{{product.price}}</strong>
+                <strong>{{shop.shop_speciality}}</strong>
               </h4>
 
             </div>
@@ -206,7 +208,7 @@
           <!--Card-->
 
         </div>
-      
+        {% endfor %}
         <!--Fourth column-->
 
       </div>

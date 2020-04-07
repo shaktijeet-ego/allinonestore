@@ -188,16 +188,16 @@
             <div class="card-body text-center">
               <!--Category & Title-->
               <a href="{% url 'shop-products' product.id %}" class="grey-text">
-                <h5>{{product.name}}</h5>
+                <h5>{{product.shop}}</h5>
               </a>
               <h5>
                 <strong>
-                  <a href="" class="dark-grey-text">{{product.date}}</a>
+                  <a href="" class="dark-grey-text">{{product.shop_opening_time}}</a>
                 </strong>
               </h5>
 
               <h4 class="font-weight-bold blue-text">
-                <strong>{{product.price}}</strong>
+                <strong>{{product.shop_speciality}}</strong>
               </h4>
 
             </div>
