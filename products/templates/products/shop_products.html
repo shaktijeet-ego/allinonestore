@@ -165,7 +165,7 @@
       <!--Grid row-->
       <div class="row wow fadeIn">
 
-        {% for shop in shops %}
+        {% for tut, partone in part_ones.items %}
         <!--Fourth column-->
         <div class="col-lg-3 col-md-6 mb-4">
 
@@ -176,7 +176,7 @@
             <!--Card image-->
             <div class="view overlay">
             
-              <img src= {{ shop.product_image.url }} class="card-img-top"alt="">
+              <img src= {{ shops.product_image.url }} class="card-img-top"alt="">
                 
               <a>
                 <div class="mask rgba-white-slight"></div>
@@ -188,16 +188,16 @@
             <div class="card-body text-center">
               <!--Category & Title-->
              
-                <h5>{{shop.shop}}</h5>
+                <h5>{{tut.tutorial_series}}</h5>
               </a>
               <h5>
                 <strong>
-                  <a href="" class="dark-grey-text">{{shop.shop_opening_time}}</a>
+                  <a href="" class="dark-grey-text"></a>
                 </strong>
               </h5>
 
               <h4 class="font-weight-bold blue-text">
-                <strong>{{shop.shop_speciality}}</strong>
+                <strong>{{shops.description}}</strong>
               </h4>
 
             </div>
