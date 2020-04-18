@@ -1,112 +1,53 @@
 from django.db import models
+from datetime import datetime
 
-# Create your models here.
-
-#For shop in the beginning
-
+# change names away from tutorial_... 
 class Shop(models.Model):
-	tutorial_category = models.CharField(max_length=200)
-	category_summary = models.CharField(max_length=200)
-	category_slug = models.CharField(max_length=200)
+    tutorial_category = models.CharField(max_length=100)
+    category_summary = models.CharField(max_length=200)
+    category_slug = models.CharField(max_length=200)
+    shop_image = models.ImageField(upload_to='products', null=True, blank=True)
+    shop_owner = models.CharField(max_length=100)
+    shop_description = models.TextField()
+    shop_added_date = models.DateTimeField(auto_now=True)
 
-	class Meta:
-		verbose_name_plural = "Categories"
+    class Meta:
+        # Django doesn't handle plurals well
+        verbose_name_plural = "Categories"
 
-	def __str__(self):
-		return self.tutorial_category
-
-
-class TutorialSeries(models.Model):
-	tutorial_series = models.CharField(max_length=200)
-	tutorial_category = models.ForeignKey(Shop, default=1, verbose_name="Category", on_delete=models.SET_DEFAULT)
-	series_summary = models.CharField(max_length=200)
-
-	class Meta:
-		verbose_name_plural = "Series"
-
-	def __str__(self):
-		return self.tutorial_series
+    def __str__(self):
+        return self.tutorial_category
 
 
-# Create your models here.
 class Product(models.Model):
-	tutorial_title = models.CharField(max_length=200)
-	tutorial_content = models.TextField()
-	#tutorial_published = models.DateTimeField("date published", default=datetime.now())
+    tutorial_series = models.CharField(max_length=200)
+    tutorial_category = models.ForeignKey(Shop, default=1, verbose_name="Category", on_delete=models.SET_DEFAULT)
+    product_image = models.ImageField(
+        upload_to='products', null=True, blank=True)
+    product_price = models.DecimalField(max_digits=10, decimal_places=2)
+    # on_delete will set the categories of a deleted category to default
+    
+    series_summary = models.CharField(max_length=300)
+    
+    class Meta:
+        # Django doesn't handle plurals well
+        verbose_name_plural = "Series"
 
-	tutorial_series = models.ForeignKey(TutorialSeries, default=1, verbose_name="Series", on_delete=models.SET_DEFAULT)
-	tutorial_slug = models.CharField(max_length=200, default=1)
-	
-	def __str__(self):
-		return self.tutorial_title
-
-
-
-
-
-
-
-
+    def __str__(self):
+        return self.tutorial_series
 
 
 
+class ProductDetails(models.Model):
+    tutorial_title = models.CharField(max_length=200)
+    tutorial_content = models.TextField()
+    tutorial_published = models.DateTimeField("date published", default=datetime.now)
+    tutorial_image = models.ImageField(
+        upload_to='products', null=True, blank=True)
 
+    tutorial_series = models.ForeignKey(Product, default=1,verbose_name="Series", on_delete=models.SET_DEFAULT )
+    tutorial_slug = models.CharField(max_length=200, default=1)
 
-
-
-
-
-
-
-# class Shop(models.Model):  #Category
-#     shop = models.CharField(max_length = 50)
-#     shop_location = models.CharField(max_length = 100)
-#     shop_opening_time = models.CharField(max_length = 5)
-#     shop_slug = models.CharField(max_length=200,default=1)
-#     #shop_speciality = models.ForeignKey(ShopType, default = "None", on_delete=models.CASCADE)
-#     product_image = models.ImageField(upload_to = 'products', null = True, blank = True)
-#     shop_image = models.ImageField(upload_to = 'products', null =True, blank = True)
-     
-#     def __str__(self):
-#             return self.shop        
-
-# class Product(models.Model):
-#     name = models.CharField(max_length = 50)
-#     description = models.TextField(max_length= 1000 ) 
-#     slug = models.SlugField()
-#     product_image = models.ImageField(upload_to = 'products', null = True, blank = True)
-#     price = models.FloatField()
-#     date = models.DateTimeField(auto_now=True)
-#     shop = models.ForeignKey(Shop, default = "None", on_delete=models.CASCADE)
-
-#     def __str__(self):
-#         return self.name
-
-
-
-# """ class ShopType(models.Model):
-#     shop_speciality = models.CharField(max_length = 50)
-
-#     def __str__(self):
-#         return self.shop_speciality
-
-
-
-# class ShopProduct(models.Model):
-#     name = models.ForeignKey(Shop, default = "None", on_delete=models.CASCADE)
-#     product_name = models.TextField(max_length= 1000)
-
-#     def __str__(self):
-#         return self.name
-
-
- 
-# class ShopProduct(models.Model):
-#     name = models.ForeignKey(Shop, default = "None", on_delete=models.CASCADE)
-#     product_name = models.TextField(max_length= 1000)
-
-#     def __str__(self):
-#         return self.name
-#  """
-
-
+    # converts objects to strings so they can be passed more easily to HTML
+    def __str__(self):
+        return self.tutorial_title
